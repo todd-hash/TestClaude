@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Blueprint: The Next Chapter Made Easy™ | Stephanie Sellers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET & ROOT ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:       #1B2B4B;
+  --navy-deep:  #101E35;
+  --navy-mid:   #243555;
+  --gold:       #B47B2E;
+  --gold-light: #C8914A;
+  --gold-pale:  #FBF4E9;
+  --cream:      #FAF7F2;
+  --warm-white: #FFFCF8;
+  --text:       #1C1C1C;
+  --mid:        #4A4A4A;
+  --soft:       #7A7A7A;
+  --border:     #E8E0D6;
+  --serif:      'Playfair Display',Georgia,serif;
+  --sans:       'Lato',sans-serif;
+  --px:         48px;
+  --max:        1100px;
+}
+
+body{font-family:var(--sans);background:var(--warm-white);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ─── SCROLL ANIMATION SYSTEM ──────────────────────────── */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.65s ease,transform 0.65s ease;
+}
+.reveal.in{opacity:1;transform:none}
+
+/* stagger delay helpers applied via JS */
+.stagger>*{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.stagger>*.in{opacity:1;transform:none}
+
+/* ─── HERO LOAD ANIMATIONS ──────────────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeFromRight{
+  from{opacity:0;transform:translateX(24px)}
+  to{opacity:1;transform:none}
+}
+
+.hero-content>*{animation:fadeUp 0.7s ease both}
+.hero-kicker  {animation-delay:0.05s}
+.hero-h1      {animation-delay:0.22s}
+.hero-sub     {animation-delay:0.38s}
+.hero-proof   {animation-delay:0.54s}
+.form-col     {animation:fadeFromRight 0.72s 0.28s ease both}
+
+/* ─── TOPBAR ────────────────────────────────────────────── */
+.topbar{
+  background:var(--navy-deep);
+  padding:9px var(--px);
+  text-align:center;
+}
+.topbar p{color:rgba(255,255,255,.75);font-size:13px;letter-spacing:.02em}
+.topbar strong{color:var(--gold-light)}
+
+/* ─── HEADER ────────────────────────────────────────────── */
+.site-header{
+  background:var(--warm-white);
+  padding:18px var(--px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:200;
+  transition:padding .3s ease,box-shadow .3s ease;
+}
+.site-header.scrolled{
+  padding-top:11px;
+  padding-bottom:11px;
+  box-shadow:0 2px 24px rgba(0,0,0,.08);
+}
+.brand{cursor:default}
+.brand-name{
+  font-family:var(--serif);
+  font-size:20px;
+  color:var(--navy);
+  font-weight:700;
+  line-height:1.2;
+}
+.brand-tag{
+  font-size:9.5px;
+  color:var(--gold);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-top:3px;
+}
+.header-right{display:flex;align-items:center;gap:22px}
+.header-phone{font-size:14px;font-weight:700;color:var(--navy)}
+.header-phone a{color:var(--navy)}
+.btn-header{
+  background:var(--gold);
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:10px 22px;
+  border-radius:3px;
+  border:none;
+  cursor:pointer;
+  transition:background .2s,transform .15s;
+  display:inline-block;
+}
+.btn-header:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero{
+  background:var(--navy);
+  padding:96px var(--px) 88px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 68% 38%,rgba(180,123,46,.11) 0%,transparent 58%),
+    radial-gradient(ellipse at 8%  85%,rgba(10,16,30,.7)    0%,transparent 48%);
+  pointer-events:none;
+}
+/* thin gold top-left accent bar */
+.hero::after{
+  content:'';
+  position:absolute;
+  top:0;left:var(--px);
+  width:56px;height:3px;
+  background:var(--gold);
+}
+.hero-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.18fr 1fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(180,123,46,.14);
+  border:1px solid rgba(180,123,46,.33);
+  padding:6px 16px;
+  border-radius:2px;
+  margin-bottom:20px;
+}
+.hero-kicker span{
+  font-size:11px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gold-light);
+}
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(32px,4.2vw,54px);
+  color:#fff;
+  line-height:1.12;
+  margin-bottom:20px;
+}
+.hero-h1 em{color:var(--gold-light);font-style:italic}
+
+.hero-sub{
+  font-size:17px;
+  color:rgba(255,255,255,.76);
+  line-height:1.82;
+  margin-bottom:32px;
+  max-width:520px;
+}
+.hero-sub strong{color:#fff}
+
+.hero-proof{display:flex;flex-direction:column;gap:11px}
+.proof-item{display:flex;align-items:center;gap:10px}
+.proof-check{
+  width:18px;height:18px;
+  border-radius:50%;
+  background:rgba(180,123,46,.22);
+  border:1px solid rgba(180,123,46,.45);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:9px;
+  color:var(--gold-light);
+}
+.proof-item span{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.4}
+
+/* form card */
+.form-card{
+  background:var(--warm-white);
+  border-radius:10px;
+  padding:38px;
+  box-shadow:0 24px 64px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.1);
+}
+.form-card-title{
+  font-family:var(--serif);
+  font-size:22px;
+  color:var(--navy);
+  margin-bottom:5px;
+  line-height:1.25;
+}
+.form-card-sub{
+  font-size:13px;color:var(--soft);
+  margin-bottom:22px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+  line-height:1.5;
+}
+.field{margin-bottom:14px}
+.field label{
+  display:block;
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:5px;
+}
+.field input{
+  width:100%;padding:12px 15px;
+  border:1.5px solid #DDD6CC;
+  border-radius:5px;
+  font-family:var(--sans);font-size:15px;
+  color:var(--text);background:#fff;
+  transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(180,123,46,.1);
+}
+.btn-form{
+  width:100%;padding:15px;
+  background:var(--gold);color:#fff;
+  font-family:var(--sans);font-size:15px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  border:none;border-radius:5px;cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .15s;
+  margin-top:4px;
+}
+.btn-form:hover{
+  background:var(--gold-light);
+  transform:translateY(-2px);
+  box-shadow:0 6px 22px rgba(180,123,46,.28);
+}
+.form-trust{
+  text-align:center;
+  font-size:12px;color:var(--soft);
+  margin-top:12px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+
+/* ─── TRUST STRIP ───────────────────────────────────────── */
+.trust-strip{
+  background:var(--cream);
+  padding:24px var(--px);
+  border-bottom:1px solid var(--border);
+}
+.trust-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  padding:6px 28px;
+  position:relative;
+}
+.trust-item+.trust-item::before{
+  content:'';
+  position:absolute;left:0;top:50%;
+  transform:translateY(-50%);
+  height:22px;width:1px;
+  background:var(--border);
+}
+.trust-badge{
+  background:var(--navy);
+  color:var(--gold-light);
+  font-size:11px;font-weight:900;
+  letter-spacing:.08em;
+  padding:4px 11px;
+  border-radius:2px;
+}
+.trust-label{font-size:13px;color:var(--mid)}
+
+/* ─── SHARED SECTION ────────────────────────────────────── */
+.section{padding:80px var(--px)}
+.inner{max-width:var(--max);margin:0 auto}
+.eyebrow{
+  font-size:11px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+  display:block;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(26px,3.8vw,43px);
+  color:var(--navy);
+  line-height:1.18;
+  margin-bottom:18px;
+}
+.section-body{
+  font-size:17px;color:var(--mid);
+  line-height:1.82;max-width:640px;
+}
+
+/* ─── PAIN SECTION ──────────────────────────────────────── */
+.pain-section{background:var(--cream);padding:80px var(--px)}
+.pain-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
+  gap:20px;
+  margin-top:48px;
+}
+.pain-card{
+  background:#fff;
+  border-radius:8px;
+  padding:28px 28px 24px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow .25s,transform .25s;
+}
+.pain-card:hover{
+  box-shadow:0 6px 28px rgba(0,0,0,.1);
+  transform:translateY(-2px);
+}
+.pain-card::before{
+  content:'\201C';
+  font-family:var(--serif);
+  font-size:90px;
+  color:var(--gold);
+  opacity:.1;
+  position:absolute;
+  top:-10px;left:14px;
+  line-height:1;
+  pointer-events:none;
+}
+.pain-card h4{
+  font-family:var(--serif);
+  font-size:19px;
+  color:var(--navy);
+  margin-bottom:10px;
+  line-height:1.3;
+}
+.pain-card p{font-size:15px;color:var(--mid);line-height:1.74}
+
+/* ─── BLUEPRINT (WHAT'S INSIDE) ─────────────────────────── */
+.blueprint-section{
+  background:var(--navy);
+  padding:80px var(--px);
+  position:relative;
+  overflow:hidden;
+}
+.blueprint-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 85% 15%,rgba(180,123,46,.09) 0%,transparent 55%);
+  pointer-events:none;
+}
+.blueprint-section .inner{position:relative;z-index:1}
+.blueprint-section .eyebrow{color:var(--gold-light)}
+.blueprint-section .section-title{color:#fff}
+.blueprint-section .section-body{color:rgba(255,255,255,.7)}
+
+.blueprint-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:48px;
+}
+.bp-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;
+  padding:28px 24px 24px;
+  transition:background .25s,border-color .25s;
+}
+.bp-card:hover{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(180,123,46,.28);
+}
+.bp-num{
+  font-family:var(--serif);
+  font-size:50px;font-weight:700;
+  color:var(--gold);opacity:.32;
+  line-height:1;margin-bottom:12px;
+}
+.bp-card h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.35}
+.bp-card p{font-size:13.5px;color:rgba(255,255,255,.58);line-height:1.66}
+
+/* ─── ABOUT ─────────────────────────────────────────────── */
+.about-section{padding:80px var(--px);background:var(--warm-white)}
+.about-grid{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:72px;
+  align-items:start;
+}
+.about-photo-wrap{position:relative}
+.about-frame{
+  border-radius:8px;
+  overflow:hidden;
+  border:3px solid var(--gold);
+  box-shadow:0 8px 40px rgba(0,0,0,.12);
+}
+.about-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+.about-badge{
+  position:absolute;
+  bottom:-18px;right:-18px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:8px;
+  padding:14px 18px;
+  box-shadow:0 4px 22px rgba(0,0,0,.22);
+  text-align:center;
+  min-width:110px;
+}
+.about-badge-num{
+  font-family:var(--serif);
+  font-size:32px;font-weight:700;
+  color:var(--gold-light);
+  line-height:1;
+}
+.about-badge-label{
+  font-size:9.5px;color:rgba(255,255,255,.7);
+  text-transform:uppercase;letter-spacing:.08em;
+  margin-top:4px;line-height:1.3;
+}
+.cred-tags{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 24px}
+.cred-tag{
+  background:var(--gold-pale);
+  border:1px solid rgba(180,123,46,.28);
+  color:var(--navy);
+  font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 12px;border-radius:2px;
+}
+.pullquote{
+  border-left:4px solid var(--gold);
+  padding:18px 24px;
+  margin:26px 0;
+  background:var(--gold-pale);
+  border-radius:0 6px 6px 0;
+}
+.pullquote p{
+  font-family:var(--serif);
+  font-size:17px;color:var(--navy);
+  font-style:italic;line-height:1.68;
+}
+
+/* ─── TESTIMONIALS ──────────────────────────────────────── */
+.testi-section{background:var(--gold-pale);padding:80px var(--px)}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:48px;
+}
+.testi-card{
+  background:#fff;
+  border-radius:8px;
+  padding:32px 28px 26px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  position:relative;
+  transition:box-shadow .25s,transform .25s;
+}
+.testi-card:hover{
+  box-shadow:0 6px 28px rgba(0,0,0,.1);
+  transform:translateY(-2px);
+}
+.testi-card::before{
+  content:'\201C';
+  font-family:var(--serif);
+  font-size:72px;
+  color:var(--gold);opacity:.18;
+  position:absolute;top:10px;left:20px;
+  line-height:1;pointer-events:none;
+}
+.stars{color:var(--gold);font-size:14px;letter-spacing:3px;margin-bottom:14px}
+.testi-text{
+  font-family:var(--serif);
+  font-size:16px;color:var(--text);
+  font-style:italic;line-height:1.78;
+  margin-bottom:20px;
+}
+.testi-author{
+  font-size:11px;color:var(--soft);
+  font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+/* ─── CTA BAND ──────────────────────────────────────────── */
+.cta-band{
+  background:var(--navy);
+  padding:88px var(--px);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 120%,rgba(180,123,46,.16) 0%,transparent 58%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1}
+.cta-band h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,46px);
+  color:#fff;
+  margin-bottom:16px;line-height:1.2;
+}
+.cta-band p{
+  font-size:18px;
+  color:rgba(255,255,255,.82);
+  max-width:560px;margin:0 auto 38px;
+  line-height:1.82;
+}
+.btn-white{
+  display:inline-block;
+  background:#fff;color:var(--navy);
+  font-family:var(--sans);font-size:15px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:17px 50px;border-radius:4px;
+  transition:transform .15s,box-shadow .15s;
+}
+.btn-white:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.18);
+}
+.cta-sub{margin-top:20px;font-size:14px;color:rgba(255,255,255,.62)}
+.cta-sub a{color:var(--gold-light)}
+
+/* ─── FOOTER ────────────────────────────────────────────── */
+footer{
+  background:var(--navy-deep);
+  padding:44px var(--px);
+  text-align:center;
+}
+footer p{color:rgba(255,255,255,.44);font-size:13px;line-height:1.9}
+footer a{color:var(--gold-light)}
+footer strong{color:rgba(255,255,255,.7)}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media(max-width:900px){
+  :root{--px:28px}
+  .hero-inner        {grid-template-columns:1fr;gap:40px}
+  .about-grid        {grid-template-columns:1fr;gap:44px}
+  .blueprint-grid    {grid-template-columns:repeat(2,1fr)}
+  .testi-grid        {grid-template-columns:1fr}
+  .about-badge       {display:none}
+  .about-frame       {max-width:320px}
+  .hero-sub          {max-width:100%}
+}
+@media(max-width:600px){
+  :root{--px:18px}
+  .site-header       {padding:12px var(--px)}
+  .header-phone      {display:none}
+  .hero              {padding:52px var(--px) 44px}
+  .hero h1,
+  .hero-h1           {font-size:clamp(26px,7vw,38px)!important}
+  .blueprint-grid    {grid-template-columns:1fr}
+  .pain-grid         {grid-template-columns:1fr}
+  .form-card         {padding:26px 20px}
+  .section,
+  .pain-section,
+  .blueprint-section,
+  .about-section,
+  .testi-section,
+  .cta-band          {padding:52px var(--px)}
+  .trust-inner       {flex-direction:column;align-items:flex-start;gap:4px}
+  .trust-item+.trust-item::before{display:none}
+  .trust-item        {padding:5px 0}
+  .about-frame       {max-width:100%}
+  .btn-white,
+  .btn-form          {padding:14px 24px!important}
+  footer             {padding:28px var(--px)}
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <p>🏡 Serving Greater Charlotte &amp; Lake Norman, NC &nbsp;·&nbsp; <strong>Senior Care Transition Specialist &amp; Realtor</strong> &nbsp;·&nbsp; 30+ Years Experience</p>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <div class="brand">
+    <div class="brand-name">Stephanie Sellers</div>
+    <div class="brand-tag">CDP · SRES · SCTS · Senior Home Coach</div>
+  </div>
+  <div class="header-right">
+    <div class="header-phone">Call or text: <a href="tel:7044670552">(704) 467-0552</a></div>
+    <a href="F1-P3-senior-transitions-booking.html" class="btn-header">Book a Free Call</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Left: headline + proof -->
+    <div class="hero-content">
+      <div class="hero-kicker">
+        <span>📘 Free Download — Instant Access</span>
+      </div>
+      <h1 class="hero-h1">Is It Time for Mom or Dad's<br><em>Next Chapter?</em></h1>
+      <p class="hero-sub">
+        Grab your free copy of <strong>The Next Chapter Made Easy™ Blueprint</strong> — the step-by-step guide that helps Charlotte-area families downsize, sell the family home, and move forward with confidence and zero regret.
+      </p>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <div class="proof-check">✓</div>
+          <span>30+ years healthcare &amp; real estate experience</span>
+        </div>
+        <div class="proof-item">
+          <div class="proof-check">✓</div>
+          <span>Certified Dementia Practitioner (CDP)</span>
+        </div>
+        <div class="proof-item">
+          <div class="proof-check">✓</div>
+          <span>Senior Real Estate Specialist (SRES)</span>
+        </div>
+        <div class="proof-item">
+          <div class="proof-check">✓</div>
+          <span>Greater Charlotte &amp; Lake Norman, NC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="form-col">
+      <div class="form-card">
+        <div class="form-card-title">Send Me the Free Blueprint</div>
+        <p class="form-card-sub">Instant access. No cost. No obligation. Just clarity.</p>
+        <form onsubmit="window.location.href='F1-P2-senior-transitions-thankyou.html';return false;">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name" required>
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="field">
+            <label>Best Phone Number</label>
+            <input type="tel" placeholder="(704) 555-0000">
+          </div>
+          <button type="submit" class="btn-form">Get the Free Blueprint →</button>
+        </form>
+        <p class="form-trust">🔒 Private &amp; confidential. We never share your information.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST / CREDENTIALS STRIP -->
+<div class="trust-strip reveal">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <span class="trust-badge">CDP</span>
+      <span class="trust-label">Certified Dementia Practitioner</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-badge">SRES</span>
+      <span class="trust-label">Senior Real Estate Specialist</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-badge">SCTS</span>
+      <span class="trust-label">Senior Care Transition Specialist</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-badge">30+ YRS</span>
+      <span class="trust-label">Healthcare &amp; Senior Living Leadership</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow">You're Not Alone in This</span>
+      <h2 class="section-title">Does Any of This Sound Familiar?</h2>
+      <p class="section-body">Most families come to me when they've been worrying in silence for months — juggling caregiving, jobs, and the weight of a decision no one wants to make. Here's what I hear most:</p>
+    </div>
+    <div class="pain-grid stagger">
+      <div class="pain-card">
+        <h4>"I don't know where to start."</h4>
+        <p>The house is full of a lifetime of memories. The idea of sorting through everything — let alone selling — feels paralyzing. You're not sure what to do first, second, or at all.</p>
+      </div>
+      <div class="pain-card">
+        <h4>"I'm worried about Mom's safety."</h4>
+        <p>She says she's fine, but you've noticed the signs. The house is too much for her now. You need a plan that honors her dignity while keeping her safe — and you needed it yesterday.</p>
+      </div>
+      <div class="pain-card">
+        <h4>"I'm afraid of making the wrong decision."</h4>
+        <p>This is likely the most significant move of your parent's life. The stakes feel enormous, and you're scared of rushing, choosing wrong, or missing something important.</p>
+      </div>
+      <div class="pain-card">
+        <h4>"I feel like I'm doing this alone."</h4>
+        <p>Siblings have opinions. Parents have fears. Agents talk about comps. Nobody is talking about the whole picture — the emotional, financial, and logistical reality all at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLUEPRINT / WHAT'S INSIDE -->
+<section class="blueprint-section">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow">Inside Your Free Blueprint</span>
+      <h2 class="section-title">Here's Exactly What You'll Get</h2>
+      <p class="section-body">The Next Chapter Made Easy™ Blueprint walks you through every stage of the transition — in plain language, in the right order, with zero overwhelm.</p>
+    </div>
+    <div class="blueprint-grid stagger">
+      <div class="bp-card">
+        <div class="bp-num">01</div>
+        <h4>Clarify Your Starting Line</h4>
+        <p>A simple framework to assess where your loved one truly stands — so you make decisions based on clarity, not panic or pressure.</p>
+      </div>
+      <div class="bp-card">
+        <div class="bp-num">02</div>
+        <h4>Simplify the Space</h4>
+        <p>A room-by-room decluttering approach that makes downsizing feel manageable — not like you're erasing a life.</p>
+      </div>
+      <div class="bp-card">
+        <div class="bp-num">03</div>
+        <h4>Explore Your Real Options</h4>
+        <p>Understand the full range of housing possibilities — from aging-in-place to rightsizing — so you can choose with confidence.</p>
+      </div>
+      <div class="bp-card">
+        <div class="bp-num">04</div>
+        <h4>Know Your Home's Value</h4>
+        <p>Learn how to unlock the equity in your loved one's home and use it to fund their next chapter on their terms.</p>
+      </div>
+      <div class="bp-card">
+        <div class="bp-num">05</div>
+        <h4>Build Your Transition Plan</h4>
+        <p>A complete timeline and checklist — from preparing the home to sale to settling into the new one — so nothing falls through the cracks.</p>
+      </div>
+      <div class="bp-card">
+        <div class="bp-num">06</div>
+        <h4>Your Free Strategy Session</h4>
+        <p>Every blueprint reader is invited to a private Next Chapter Made Easy™ Strategy Session with Stephanie — at no cost and no obligation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="inner">
+    <div class="about-grid">
+
+      <!-- Photo -->
+      <div class="about-photo-wrap reveal">
+        <div class="about-frame">
+          <img
+            class="about-photo"
+            src="https://assets.cdn.filesafe.space/WhlzY3YgCCxkolh0Axbk/media/6a1a0b98d4c3ffafc8e998c2.webp"
+            alt="Stephanie Sellers — Senior Care Transition Specialist &amp; Realtor"
+          >
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">30+</div>
+          <div class="about-badge-label">Years<br>Experience</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-content reveal">
+        <span class="eyebrow">Your Guide Through This</span>
+        <h2 class="section-title">Meet Stephanie Sellers</h2>
+        <div class="cred-tags">
+          <span class="cred-tag">CDP</span>
+          <span class="cred-tag">SRES</span>
+          <span class="cred-tag">SCTS</span>
+          <span class="cred-tag">Senior Home Coach</span>
+          <span class="cred-tag">Licensed Insurance Professional</span>
+          <span class="cred-tag">30+ Years Experience</span>
+        </div>
+        <p class="section-body">I've spent more than 30 years in healthcare, senior living leadership, and real estate — and I've watched too many families go through this transition alone, overwhelmed, and underprepared.</p>
+        <br>
+        <p class="section-body">I created The Next Chapter Made Easy™ because families in the Greater Charlotte and Lake Norman area deserve more than a real estate transaction. They deserve a guide — someone who understands the emotional weight of this moment, the care options, the housing market, and the regulatory landscape all at once.</p>
+        <div class="pullquote">
+          <p>"My job isn't just to sell your loved one's home. It's to make sure the whole family feels seen, supported, and certain about the path forward."</p>
+        </div>
+        <p class="section-body">I am the only professional in Greater Charlotte combining senior real estate, healthcare compliance consulting, and senior care transition certification in a single, fully integrated practice.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="inner">
+    <div class="reveal">
+      <span class="eyebrow">What Charlotte Families Are Saying</span>
+      <h2 class="section-title">Real Stories. Real Families.</h2>
+    </div>
+    <div class="testi-grid stagger">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Stephanie didn't just sell my mother's house — she held our family's hand through the entire process. She understood things about senior transitions that no other agent even thought to ask about."</p>
+        <p class="testi-author">— Family client, Charlotte NC</p>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I was terrified of making the wrong decision for my dad. Stephanie walked me through every option with patience and expertise I didn't know I needed. I can't imagine doing this without her."</p>
+        <p class="testi-author">— Family client, Lake Norman NC</p>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"We live out of state and were worried about managing everything remotely. Stephanie became our boots on the ground, our advisor, and our advocate. She made the impossible feel manageable."</p>
+        <p class="testi-author">— Out-of-state family, Charlotte NC</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Your Family Deserves a Clear Path Forward.</h2>
+    <p>Grab your free blueprint and take the first step toward a transition that honors your loved one — and protects your peace of mind.</p>
+    <a href="F1-P2-senior-transitions-thankyou.html" class="btn-white">Get the Free Blueprint Now →</a>
+    <p class="cta-sub">
+      Or call Stephanie directly: <a href="tel:7044670552">(704) 467-0552</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:sellersrealtygroupnc@gmail.com">sellersrealtygroupnc@gmail.com</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Stephanie Sellers</strong> &nbsp;|&nbsp; Sellers Realty Group NC &amp; Premier Senior Resource<br>
+    Greater Charlotte &amp; Lake Norman, NC &nbsp;·&nbsp;
+    <a href="tel:7044670552">(704) 467-0552</a> &nbsp;·&nbsp;
+    <a href="mailto:sellersrealtygroupnc@gmail.com">sellersrealtygroupnc@gmail.com</a><br><br>
+    <small>© 2026 Stephanie Sellers. All rights reserved. &nbsp;|&nbsp; Designed &amp; Created by <strong>Coach Todd Harris</strong> | The Road To A Million</small>
+  </p>
+</footer>
+
+<script>
+(function(){
+  // ── Sticky header shadow ──────────────────────────────
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  }, {passive: true});
+
+  // ── Scroll reveal: single .reveal elements ────────────
+  var revealEls = document.querySelectorAll('.reveal');
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+
+  revealEls.forEach(function(el){ revealObserver.observe(el); });
+
+  // ── Scroll reveal: stagger groups ────────────────────
+  var staggerGroups = document.querySelectorAll('.stagger');
+  var staggerObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var children = entry.target.querySelectorAll(':scope > *');
+        children.forEach(function(child, i){
+          setTimeout(function(){
+            child.classList.add('in');
+          }, i * 100);
+        });
+        staggerObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+
+  staggerGroups.forEach(function(g){ staggerObserver.observe(g); });
+
+  // ── Smooth anchor scrolls ─────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(a.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
