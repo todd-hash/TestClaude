@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premier Senior Resource – Footer</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #1B6B6A;
+    --teal-dark:  #134F4E;
+    --teal-light: #EAF4F4;
+    --cream:      #F8F5F0;
+    --white:      #FFFFFF;
+    --text:       #2C2C2C;
+    --muted:      #5A6A6A;
+    --border:     #D0E4E4;
+    --gold:       #B47B2E;
+    --font-sans:  'Lato', system-ui, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--cream);
+    border-top: 3px solid var(--teal);
+  }
+
+  .footer-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 40px 40px;
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr 1fr;
+    gap: 40px 48px;
+    align-items: start;
+  }
+
+  /* Logo column */
+  .footer-logo-col {}
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .footer-logo svg {
+    width: 90px;
+    height: auto;
+  }
+
+  .footer-logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .footer-logo-wordmark .word-premier {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .footer-logo-wordmark .word-rule {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 3px 0;
+  }
+
+  .footer-logo-wordmark .word-rule span {
+    display: block;
+    height: 1.5px;
+    width: 28px;
+    background: var(--teal);
+  }
+
+  .footer-logo-wordmark .word-senior {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    color: var(--teal);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .footer-tagline {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-top: 4px;
+    max-width: 180px;
+  }
+
+  /* Column headings */
+  .footer-col h4 {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  /* Nav links */
+  .footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.2s, padding-left 0.2s;
+    display: inline-block;
+  }
+
+  .footer-nav a:hover {
+    color: var(--teal);
+    padding-left: 4px;
+  }
+
+  /* Contact */
+  .footer-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-contact-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .contact-icon svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .contact-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .contact-text a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-text a:hover { color: var(--teal); }
+
+  /* Newsletter */
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .newsletter-input-wrap {
+    position: relative;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .newsletter-input::placeholder { color: #aab8b8; }
+
+  .newsletter-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(27,107,106,0.12);
+  }
+
+  .newsletter-input.error {
+    border-color: #d9534f;
+    box-shadow: 0 0 0 3px rgba(217,83,79,0.12);
+  }
+
+  .newsletter-btn {
+    padding: 11px 20px;
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-transform: uppercase;
+  }
+
+  .newsletter-btn:hover {
+    background: var(--teal-dark);
+    transform: translateY(-1px);
+  }
+
+  .newsletter-btn:active { transform: translateY(0); }
+
+  .newsletter-message {
+    font-size: 12px;
+    min-height: 16px;
+    transition: opacity 0.3s;
+  }
+
+  .newsletter-message.success { color: #2e7d5e; }
+  .newsletter-message.error   { color: #d9534f; }
+
+  /* Social row */
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+
+  .social-link:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .social-link svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    background: var(--teal-dark);
+    padding: 16px 40px;
+  }
+
+  .footer-bottom-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-copyright {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .footer-bottom-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.9); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 32px;
+      padding: 44px 32px 36px;
+    }
+
+    .footer-logo-col {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-main {
+      grid-template-columns: 1fr;
+      padding: 36px 24px 28px;
+      gap: 28px;
+    }
+
+    .footer-logo-col { grid-column: unset; }
+
+    .footer-logo {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-logo svg { width: 64px; }
+
+    .footer-bottom {
+      padding: 14px 24px;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .footer-bottom-links { justify-content: center; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+
+  <div class="footer-main">
+
+    <!-- Logo -->
+    <div class="footer-logo-col">
+      <a href="#" class="footer-logo" aria-label="Premier Senior Resource home">
+
+        <!-- Heart / figure SVG logo mark -->
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Outer heart shape -->
+          <path d="M60 105 C60 105 12 72 12 42 C12 24 26 12 42 12 C50 12 57 16 60 22 C63 16 70 12 78 12 C94 12 108 24 108 42 C108 72 60 105 60 105Z" fill="#1B6B6A" opacity="0.15"/>
+          <path d="M60 100 C60 100 15 69 15 42 C15 26 27 15 42 15 C50 15 57 19 60 25 C63 19 70 15 78 15 C93 15 105 26 105 42 C105 69 60 100 60 100Z" fill="none" stroke="#1B6B6A" stroke-width="3.5"/>
+          <!-- Figure: head -->
+          <circle cx="60" cy="38" r="9" fill="#1B6B6A"/>
+          <!-- Figure: body arc (arms spread like care) -->
+          <path d="M38 62 Q48 54 60 58 Q72 54 82 62" stroke="#1B6B6A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <!-- Figure: torso -->
+          <path d="M60 47 L60 62" stroke="#1B6B6A" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Small heart at center chest -->
+          <path d="M55 53 C55 51 57 50 58.5 51.5 C60 50 62 51 62 53 C62 55 58.5 58 58.5 58 C58.5 58 55 55 55 53Z" fill="#1B6B6A"/>
+        </svg>
+
+        <div class="footer-logo-wordmark">
+          <span class="word-premier">Premier</span>
+          <div class="word-rule"><span></span><span></span></div>
+          <span class="word-senior">Senior Resource</span>
+        </div>
+      </a>
+      <p class="footer-tagline">Serving families across North Carolina and beyond.</p>
+
+      <!-- Social icons under logo on desktop -->
+      <div class="footer-social" aria-label="Social media">
+        <!-- Facebook -->
+        <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul class="footer-nav" role="list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Testimonials</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="footer-contact-list" role="list">
+        <li>
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span class="contact-text"><a href="mailto:info@premiersenioresource.com">info@premiersenioresource.com</a></span>
+        </li>
+        <li>
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.29 6.29l1.18-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="contact-text"><a href="tel:+17044670622">+1 704 467 0622</a></span>
+        </li>
+        <li>
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="contact-text">2208 Seagull Dr<br>Denver, NC 28037</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-col">
+      <h4>Join Our Newsletter</h4>
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <div class="newsletter-input-wrap">
+          <input
+            type="email"
+            class="newsletter-input"
+            id="newsletterEmail"
+            placeholder="Type Your Email"
+            autocomplete="email"
+            aria-label="Email address for newsletter"
+          >
+        </div>
+        <button type="submit" class="newsletter-btn">Sign Up Now</button>
+        <p class="newsletter-message" id="newsletterMessage" role="alert" aria-live="polite"></p>
+      </form>
+    </div>
+
+  </div><!-- /footer-main -->
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copyright">© 2026 Premier Senior Resource. All Rights Reserved.</p>
+      <ul class="footer-bottom-links" role="list">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+(function () {
+  var form    = document.getElementById('newsletterForm');
+  var input   = document.getElementById('newsletterEmail');
+  var message = document.getElementById('newsletterMessage');
+
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showMsg(text, type) {
+    message.textContent = text;
+    message.className   = 'newsletter-message ' + type;
+  }
+
+  function clearMsg() {
+    message.textContent = '';
+    message.className   = 'newsletter-message';
+  }
+
+  input.addEventListener('input', function () {
+    input.classList.remove('error');
+    clearMsg();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var val = input.value.trim();
+
+    if (!val) {
+      input.classList.add('error');
+      showMsg('Please enter your email address.', 'error');
+      input.focus();
+      return;
+    }
+
+    if (!emailRe.test(val)) {
+      input.classList.add('error');
+      showMsg('Please enter a valid email address.', 'error');
+      input.focus();
+      return;
+    }
+
+    /* ── Replace this block with your real API call ── */
+    var btn = form.querySelector('.newsletter-btn');
+    btn.textContent = 'Subscribing…';
+    btn.disabled = true;
+
+    setTimeout(function () {
+      btn.textContent = 'Sign Up Now';
+      btn.disabled = false;
+      input.value = '';
+      input.classList.remove('error');
+      showMsg('You\'re subscribed! Thank you.', 'success');
+    }, 900);
+    /* ── End stub ── */
+  });
+})();
+</script>
+
+</body>
+</html>
