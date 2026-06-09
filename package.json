@@ -1,0 +1,14 @@
+{
+  "name": "testclaude",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "serve": "node serve.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
